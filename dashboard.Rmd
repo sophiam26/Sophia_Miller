@@ -20,7 +20,7 @@ instacart_data = instacart %>%
   filter(aisle %in% c("frozen produce", "baking ingredients", "ice cream ice"))
 ```
 
-Column {data-width=650}
+Column {data-width=450}
 -----------------------------------------------------------------------
 
 ### Chart A
