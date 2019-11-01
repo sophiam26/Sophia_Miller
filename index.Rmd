@@ -6,8 +6,12 @@ output:
     toc_float: true
     theme: cerulean
 ---
+### Welcome to my website
 
-Here are some pictures from my summer practicum in Zimbabwe:
+On this site, you can find my resume, links to my email and Github page, and a dashboard using data from Instacart to show my knowledge of R.
+
+
+For fun, here are some pictures from my summer practicum in Zimbabwe:
 
 ![](Images/IMG_1627.JPG)
 
