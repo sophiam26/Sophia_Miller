@@ -1,4 +1,4 @@
-name: "site yml"
+name: "yml"
 output_dir: "."
 navbar:
   title: "Home"
