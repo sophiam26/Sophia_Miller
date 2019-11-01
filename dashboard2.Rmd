@@ -52,3 +52,24 @@ instacart_data %>%
     yaxis = list(title = "Days Since Prior Order")
     )
 ```
+
+### Number of Orders by Day of Week
+
+```{r}
+instacart_data %>%
+  mutate(
+    order_dow = as.factor(order_dow)) %>% 
+  arrange(order_dow) %>% 
+  mutate(
+    day = recode(order_dow, '0' = "Sunday", '1' = "Monday", '2' = "Tuesday", '3' = "Wednesday", '4' = "Thursday", '5' = "Friday", '6' = "Saturday")) %>% 
+  group_by(aisle, day) %>% 
+  summarize(
+    n = n()
+  ) %>% 
+  distinct(.keep_all = TRUE) %>% 
+  plot_ly(x = ~day, y = ~n, type = "scatter", mode = "lines", color = ~aisle) %>% 
+  layout(
+    xaxis = list(title = "Day"),
+    yaxis = list(title = "Number of Items Ordered")
+    )
+```
