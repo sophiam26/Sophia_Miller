@@ -1,0 +1,16 @@
+name: "Yay"
+output_dir: "."
+navbar:
+  title: "Home"
+  right:
+    - text: "About"
+      href: about.html
+    - text: "Dashboard"
+      href: dashboard.html
+    - icon: fa-envelope fa-lg
+      href: mailto:<sm4594@cumc.columbia.edu>
+    - icon: fa-github fa-lg
+      href: http://github.com/sophiam26/
+output:
+  html_document:
+    theme: cerulean

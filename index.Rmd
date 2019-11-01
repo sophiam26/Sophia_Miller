@@ -1,0 +1,10 @@
+---
+title: "Sophia's awesome website"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    theme: cerulean
+---
+
+# This is Sophia's awesome website
