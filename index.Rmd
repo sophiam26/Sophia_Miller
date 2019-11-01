@@ -8,6 +8,8 @@ output:
 ---
 ### Welcome to my website
 
+I am a 26 year old MPH student at the Mailman School of Public Health. I am originally from Woodstock, New York and now live here in NYC.
+
 On this site, you can find my resume, links to my email and Github page, and a dashboard using data from Instacart to show my knowledge of R.
 
 
