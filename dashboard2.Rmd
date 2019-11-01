@@ -70,6 +70,6 @@ instacart_data %>%
   plot_ly(x = ~day, y = ~n, type = "scatter", mode = "lines", color = ~aisle) %>% 
   layout(
     xaxis = list(title = "Day"),
-    yaxis = list(title = "Number of Items Ordered")
+    yaxis = list(title = "Items Ordered")
     )
 ```
