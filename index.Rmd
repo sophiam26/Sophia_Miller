@@ -7,4 +7,10 @@ output:
     theme: cerulean
 ---
 
-# This is Sophia's awesome website
+Here are some pictures from my summer practicum in Zimbabwe:
+
+![](Images/IMG_1627.JPG)
+
+![](Images/IMG_7959.JPG)
+
+![](Images/IMG_2127.JPG) 
