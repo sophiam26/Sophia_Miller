@@ -1,5 +1,5 @@
 ---
-title: "Untitled"
+title: "Instacart Dashboard"
 output: 
   flexdashboard::flex_dashboard:
     orientation: columns
@@ -8,29 +8,47 @@ output:
 
 ```{r setup, include=FALSE}
 library(flexdashboard)
+library(tidyverse)
+library(p8105.datasets)
+library(viridis)
+library(plotly)
 ```
 
-Column {data-width=650}
+```{r}
+data("instacart")
+instacart_data = instacart %>% 
+  filter(aisle %in% c("frozen produce", "baking ingredients", "ice cream ice"))
+```
+
+Column {data-width=450}
 -----------------------------------------------------------------------
 
-### Chart A
+### Number of Items Ordered from Selected Aisles
 
 ```{r}
-
+instacart_data %>%
+group_by(aisle) %>% 
+  summarize(
+    n_items_ordered = n()) %>% 
+  mutate(
+    aisle = reorder(aisle, n_items_ordered)) %>%  
+  plot_ly(x = ~aisle, y = ~n_items_ordered, type = "bar", color = ~aisle) %>% 
+  layout(
+    xaxis = list(title = "Aisle"),
+    yaxis = list(title = "Number of Items Ordered")
+    )
 ```
 
 Column {data-width=350}
 -----------------------------------------------------------------------
 
-### Chart B
+### Days Since Prior Order (capped at 30 days)
 
 ```{r}
-
+instacart_data %>% 
+  plot_ly(x = ~aisle, y = ~days_since_prior_order, type = "box", color = ~aisle) %>% 
+ layout(
+    xaxis = list(title = "Aisle"),
+    yaxis = list(title = "Days Since Prior Order")
+    )
 ```
-
-### Chart C
-
-```{r}
-
-```
-
