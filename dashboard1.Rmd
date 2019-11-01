@@ -9,7 +9,6 @@ output:
 ```{r setup, include=FALSE}
 library(flexdashboard)
 library(tidyverse)
-library(viridis)
 library(p8105.datasets)
 library(plotly)
 ```
@@ -36,7 +35,7 @@ group_by(aisle) %>%
   layout(
     title = "Number of Items Ordered from Selected Aisles",
     xaxis = list(title = "Aisle"),
-    yaxis = list(title = "Number of Aisles Ordered")
+    yaxis = list(title = "Number of Items Ordered")
     )
 ```
 
@@ -47,11 +46,22 @@ Column {data-width=350}
 
 ```{r}
 instacart_data %>%
-  plot_ly(y = ~ days_since_prior_order, color = ~aisle, type = "box") %>% 
+  filter(aisle == "baking ingredients") %>% 
+  mutate(
+    order_dow = as.factor(order_dow)
+    ) %>% 
+  mutate(
+    day = recode(order_dow, '0' = "Sunday", '1' = "Monday", '2' = "Tuesday", '3' = "Wednesday", '4' = "Thursday", '5' = "Friday", '6' = "Saturday")
+    ) %>% 
+  group_by(order_number, day) %>% 
+  mutate(
+    n = n()
+    ) %>% 
+  plot_ly(x = ~day, y = ~n, color = ~day, type = "box") %>% 
   layout(
-    title = "Days Since Prior Order by Aisle",
-    xaxis = list(title = "Aisle"),
-    yaxis = list(title = "Days Since Prior Order")
+    title = "Number of Baking Ingredients Ordered by Day of Week",
+    xaxis = list(title = " "),
+    yaxis = list(title = "Number of Items Ordered")
     )
 ```
 
