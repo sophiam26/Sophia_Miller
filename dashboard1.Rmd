@@ -39,3 +39,33 @@ group_by(aisle) %>%
     yaxis = list(title = "Number of Aisles Ordered")
     )
 ```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r}
+instacart_data %>%
+  plot_ly(y = ~ days_since_prior_order, color = ~aisle, type = "box") %>% 
+  layout(
+    title = "Days Since Prior Order by Aisle",
+    xaxis = list(title = "Aisle"),
+    yaxis = list(title = "Days Since Prior Order")
+    )
+```
+
+### Chart C
+
+```{r}
+hour_density = instacart_data %>%
+  ggplot(aes(x = order_hour_of_day, fill = aisle)) +
+  geom_density(alpha = 0.5) +
+  ggtitle("Order Time of Day by Aisle") +
+  ylab("Density") +
+  xlab("Hour of Day")
+
+ggplotly(hour_density)
+  
+```
+
