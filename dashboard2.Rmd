@@ -49,7 +49,7 @@ instacart_data %>%
   plot_ly(x = ~aisle, y = ~days_since_prior_order, type = "box", color = ~aisle) %>% 
  layout(
     xaxis = list(title = "Aisle"),
-    yaxis = list(title = "Days Since Prior Order")
+    yaxis = list(title = "Days Passed")
     )
 ```
 
