@@ -1,0 +1,71 @@
+---
+title: "Instacart Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(tidyverse)
+library(viridis)
+library(p8105.datasets)
+library(plotly)
+```
+
+```{r}
+data("instacart")
+instacart_data = instacart %>% 
+  filter(aisle %in% c("frozen produce", "baking ingredients", "ice cream ice"))
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Chart A
+
+```{r}
+instacart_data %>%
+group_by(aisle) %>% 
+  summarize(
+    n_items_ordered = n()) %>% 
+  mutate(
+    aisle = reorder(aisle, n_items_ordered)) %>% 
+  plot_ly(x = ~aisle, y = ~n_items_ordered, type = "bar", color = "red") %>% 
+  layout(
+    title = "Number of Items Ordered from Selected Aisles",
+    xaxis = list(title = "Aisle"),
+    yaxis = list(title = "Number of Aisles Ordered")
+    )
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r}
+instacart_data %>%
+  plot_ly(y = ~ days_since_prior_order, color = ~aisle, type = "box") %>% 
+  layout(
+    title = "Days Since Prior Order by Aisle",
+    xaxis = list(title = "Aisle"),
+    yaxis = list(title = "Days Since Prior Order")
+    )
+```
+
+### Chart C
+
+```{r}
+hour_density = instacart_data %>%
+  ggplot(aes(x = order_hour_of_day, fill = aisle)) +
+  geom_density(alpha = 0.5) +
+  ggtitle("Order Time of Day by Aisle") +
+  ylab("Density") +
+  xlab("Hour of Day")
+
+ggplotly(hour_density)
+  
+```
+
